@@ -1,0 +1,46 @@
+{% load static %}
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PDF</title>
+    <style>
+        .back {
+            background-color: red;
+        }
+        .cusname{
+            font-size: 2.5rem;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cusname">
+        {{customer}}
+    </div>
+    <hr>
+    {{ customer.sescription|linebreaks }}
+    <br>
+    {{ customer.logo }}
+    <br>
+    {{ customer.logo.url }}
+    <br>
+    {{ customer.logo.path }}
+    <hr>
+    {% static 'bike.jpg' %}
+    <div class="back">
+        <!-- to get stuff from the static folder the entire url need to be present -->
+        <!-- <img src='d:/djangopdf/static/bike.jpg' height="200px"> -->
+        <hr>
+        <img src="{{ customer.logo.path }}" height="200">
+        <!-- if the image will not show try this -->
+        <!-- <img src="media/{{ customer.logo }}" height="200"> -->
+    </div>
+</body>
+
+</html>
